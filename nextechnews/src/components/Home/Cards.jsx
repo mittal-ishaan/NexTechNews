@@ -1,11 +1,12 @@
 import React from "react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
 
-export default function Cards({source,title, description, url, urlToImage}) {
+export default function Cards({key,title, description, url, urlToImage,setArticleuri}) {
   return (
     <Card className="max-w-full my-1">
       <CardHeader className="flex gap-3">
-        {urlToImage ?         <Image
+        {urlToImage ?         
+        <Image
           alt="logo"
           radius="sm"
           src={urlToImage}
