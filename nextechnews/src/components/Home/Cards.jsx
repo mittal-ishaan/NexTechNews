@@ -1,7 +1,7 @@
 import React from "react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
 
-export default function Cards({key,title, description, url, urlToImage,setArticleuri}) {
+export default function Cards({key,title, description, url, urlToImage,uri,setArticleuri}) {
   return (
     <Card className="max-w-full my-1">
       <CardHeader className="flex gap-3">
@@ -27,14 +27,17 @@ export default function Cards({key,title, description, url, urlToImage,setArticl
       </>
     ) : null}
       <Divider/>
-      <CardFooter>
+      <CardFooter className="flex gap-3">
         <Link
           isExternal
           showAnchorIcon
           href={url}
-          className="text-sm"
+          className="text-sm col-8"
         >
           Visit original article.
+        </Link>
+        <Link>
+          <button onClick={() => {console.log(uri);setArticleuri(uri);}} className="text-sm col-4">Read More</button>
         </Link>
       </CardFooter>
     </Card>

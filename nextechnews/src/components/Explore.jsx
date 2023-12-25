@@ -88,7 +88,9 @@ const Explore = () => {
                 />
             </Grid>
             <Grid item xs={5}>
-                <NewsPreview/>
+                <NewsPreview
+                    articleuri={articleuri}
+                />
             </Grid>
         </Grid>
     </div>

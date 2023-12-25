@@ -65,6 +65,7 @@ const NewsList = ({ fetchNewsData, sortBy, sortByAsc, setSortByAsc ,articleStart
                       description={element.body? element.body : ""}
                       url={element.url}
                       image={element.image}
+                      uri={element.uri}
                       setArticleuri={setArticleuri}
                     />
                 })}
