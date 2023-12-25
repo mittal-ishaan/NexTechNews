@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import Cards from './Cards';
 import {Spinner} from "@nextui-org/spinner";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { Card } from '@nextui-org/card';
-
+import {ScrollShadow} from "@nextui-org/scroll-shadow";
 
 
 const NewsList = ({ fetchNewsData, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri }) => {
@@ -52,7 +51,7 @@ const NewsList = ({ fetchNewsData, sortBy, sortByAsc, setSortByAsc ,articleStart
 
 
   return (
-    <div>      
+    <ScrollShadow hideScrollBar >      
       {loading ? (
         <Spinner /> // Show loading spinner while articles are being fetched
       ) : (
@@ -74,7 +73,7 @@ const NewsList = ({ fetchNewsData, sortBy, sortByAsc, setSortByAsc ,articleStart
                 <p>You've reached the end of the articles.</p>
               </Card>
         </div> )}
-    </div>
+    </ScrollShadow>
   )
 NewsList.defaultProps = {
     country: 'in',

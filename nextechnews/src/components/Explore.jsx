@@ -66,6 +66,7 @@ const Explore = () => {
         <Grid container spacing={2} className="min-h-screen">
             <Grid item xs={2} className="border-r border-gray-200">
                 <NewsProviders 
+                    sortBy={sortBy}
                     setSortBy={setSortBy}
                     articleStartDate={articleStartDate}
                     articleEndDate={articleEndDate}
