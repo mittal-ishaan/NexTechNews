@@ -28,12 +28,12 @@ export default function NavBar() {
       </NavbarBrand>
       {isSmallScreen ? (
       <NavbarContent as="div" justify="end">
-        <Button as={Link} href="#" variant="flat" className="rounded w-auto">
+        <Button isIconOnly as={Link} href="#" variant="flat" className="rounded-full">
           <SearchIcon size={18}/>
         </Button>
         </NavbarContent>      
         ) : (
-          <NavbarContent as="div" className="items-center" justify="center">
+      <NavbarContent as="div" className="items-center" justify="center">
         <Input
           classNames={{
             base: `md:w-96 sm:w-80 h-10`,
@@ -47,15 +47,14 @@ export default function NavBar() {
           startContent={<SearchIcon size={18} />}
           type="search"
         />
-            </NavbarContent>
+      </NavbarContent>
       )}
       <NavbarContent justify="end">
-            <NavbarItem>
-              <Button as={Link} href="#" variant="flat" className="bg-orange-500 rounded w-auto">
-                Get Started
-              </Button>
-            </NavbarItem>
-  
+        <NavbarItem>
+          <Button as={Link} href="#" variant="flat">
+            Get Started
+          </Button>
+        </NavbarItem>
       </NavbarContent>
     </Navbar>
   );
