@@ -40,6 +40,7 @@ const NewsList = ({ fetchNewsData,keyword, sortBy, sortByAsc, setSortByAsc ,arti
   useEffect(() => {
     console.log(keyword);
     const fetchData = async () => {
+      setLoading(true);
       const data = await fetchNewsData(keyword, sortBy, sortByAsc, articleStartDate, articleEndDate, ignoreKeywords);
       setArticles(data);
       console.log(data);
@@ -85,5 +86,3 @@ NewsList.propTypes = {
 }
 }
 export default NewsList
-
-// f187ce5b9846475c9da589d78f6b29c1

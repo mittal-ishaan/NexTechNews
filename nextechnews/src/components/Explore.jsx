@@ -1,13 +1,12 @@
 // home.jsx
 'use client';
 import React, { useState } from 'react';
-import { Grid } from '@mui/material';
 import NewsProviders from './Home/NewsProviders';
 import NewsList from './Home/NewsList';
 import NewsPreview from './Home/NewsPreview';
 import {Divider} from "@nextui-org/divider";
 
-const Explore = ({keyword}) => { 
+const Explore = ({darkMode,keyword}) => { 
     const [sortBy, setSortBy] = useState("date");
     const [sortByAsc, setSortByAsc] = useState(false);
     const [articleuri, setArticleuri] = useState("");
@@ -61,9 +60,8 @@ const Explore = ({keyword}) => {
         return data;
       }
   return (
-    <div>
-        <Grid container spacing={2} className="">
-            <Grid item xs={2} className="border-r border-gray-200">
+    <div className='grid grid-cols-12 gap-1'>
+            <div className={`col-span-3 border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsProviders 
                     sortBy={sortBy}
                     setSortBy={setSortBy}
@@ -73,8 +71,8 @@ const Explore = ({keyword}) => {
                     setArticleEndDate={setArticleEndDate}
                     setIgnoreKeywords={setIgnoreKeywords}
                 />
-            </Grid>
-            <Grid item xs={4} className="border-r border-gray-200" style={{paddingLeft: 0}}>
+            </div>
+            <div className={`col-span-4 border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
                     keyword={keyword}
@@ -86,13 +84,12 @@ const Explore = ({keyword}) => {
                     ignoreKeywords={ignoreKeywords}
                     setArticleuri={setArticleuri}
                 />
-            </Grid>
-            <Grid item xs={5}>
+            </div>
+            <div className='col-span-5'>
                 <NewsPreview
                     articleuri={articleuri}
                 />
-            </Grid>
-        </Grid>
+            </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nex
 
 export default function Cards({key,title, description, url, urlToImage,uri,setArticleuri}) {
   return (
-    <Card className="max-w-full my-1">
+    <Card className="max-w-full m-1">
       <CardHeader className="flex gap-3">
         {urlToImage ?         
         <Image
