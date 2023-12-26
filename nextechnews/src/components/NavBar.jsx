@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	Button,
 	Link,
@@ -33,10 +33,11 @@ export default function NavBar({searchBar ,setSearchbar, keyword, setKeyword, da
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setKeyword(searchQuery);
-    console.log(keyword);
     setSearchQuery("");
   };
-
+  useEffect(() => {
+    console.log(keyword);
+  }, [keyword]);
   const searchInput = (
 		<form onSubmit={handleSearchSubmit} className="flex items-center">
 			<Input
@@ -55,15 +56,6 @@ export default function NavBar({searchBar ,setSearchbar, keyword, setKeyword, da
 			value={searchQuery}
 			onChange={handleInputChange}
 			/>
-			<NavbarItem className="hidden md:flex ml-2">
-				<Button
-					type="submit"
-					className="text-sm font-normal text-default-600 bg-default-100"
-					variant="flat"
-				>
-					Search
-				</Button>
-			</NavbarItem>
 		</form>
 	);
 

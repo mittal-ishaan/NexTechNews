@@ -77,6 +77,7 @@ const Explore = ({keyword}) => {
             <Grid item xs={4} className="border-r border-gray-200" style={{paddingLeft: 0}}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
+                    keyword={keyword}
                     sortBy={sortBy}
                     sortByAsc={sortByAsc}
                     setSortByAsc={setSortByAsc}

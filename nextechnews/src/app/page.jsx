@@ -15,10 +15,9 @@ export default function Home() {
   const [keyword, setKeyword] = React.useState("apple");
   const [darkMode, setDarkMode] = React.useState(false);
 
-  useEffect()
 
   return (
-    <main className={`text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
+    <main className={`min-h-screen text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
         {searchbar ?
           <Search
             searchbar={searchbar}
