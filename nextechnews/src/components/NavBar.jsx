@@ -22,7 +22,6 @@ import {
 import NextLink from "next/link";
 
 
-
 export default function NavBar({searchBar ,setSearchbar, keyword, setKeyword, darkMode, setDarkMode}) {
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 

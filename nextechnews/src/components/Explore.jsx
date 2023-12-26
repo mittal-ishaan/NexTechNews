@@ -47,7 +47,7 @@ const Explore = ({darkMode,keyword}) => {
           if (ignoreKeywords) {
             requestBody.ignoreKeywords = ignoreKeywords;
           }
-          
+          console.log(requestBody);
         const response = await fetch('http://eventregistry.org/api/v1/article/getArticles', {
             method: 'POST',
             headers: {
@@ -56,12 +56,38 @@ const Explore = ({darkMode,keyword}) => {
             body: JSON.stringify(requestBody)
           });
         const data = await response.json();
-        console.log(data);
+        return data;
+      };
+
+      async function fetchTopArticles(){
+        let requestBody = {
+            "uri": "54cdbea0-24f3-435f-bbbf-fb0647787d97",
+            "articlesCount": 25,
+            "apiKey": "66a98f4d-c282-4adc-816b-8c13fe3de062",
+            "articlePage": 1,
+            "dataType": ["news", "pr", "blog"],
+            "articleBodyLen": 100  
+        }
+        if(sortBy){
+            requestBody.articlesSortBy = sortBy;
+        }
+        if(sortByAsc){
+            requestBody.articlesSortByAsc = sortByAsc;
+        }
+        console.log(requestBody);
+        const response = await fetch('http://eventregistry.org/api/v1/article/getArticlesForTopicPage', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+          });
+        const data = await response.json();
         return data;
       }
   return (
     <div className='grid grid-cols-12 gap-1'>
-            <div className={`col-span-3 border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className={`col-span-3 border-r  ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsProviders 
                     sortBy={sortBy}
                     setSortBy={setSortBy}
@@ -72,9 +98,10 @@ const Explore = ({darkMode,keyword}) => {
                     setIgnoreKeywords={setIgnoreKeywords}
                 />
             </div>
-            <div className={`col-span-4 border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className={`col-span-4 border-r overflow-scroll ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
+                    fetchTopArticles={fetchTopArticles}
                     keyword={keyword}
                     sortBy={sortBy}
                     sortByAsc={sortByAsc}

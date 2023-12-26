@@ -49,7 +49,6 @@ export default function NewsProviders({sortBy, setSortBy,articleStartDate, artic
       <DropdownMenu 
         aria-label="Single selection example"
         variant="flat"
-        disallowEmptySelection
         selectionMode="single"
         selectedKeys={selectedKey}
         onSelectionChange={(newSelection)=>{
@@ -65,10 +64,10 @@ export default function NewsProviders({sortBy, setSortBy,articleStartDate, artic
     </Dropdown>
       <Spacer y={1}/>
       <h4>Start Date</h4>
-      <Input type="date" size="sm" className="w-3/4" name="articleStartDate" placeholder={articleStartDate} onChange={(value) => setFormValues(prevValues => ({ ...prevValues, articleStartDate: value }))}/>
+      <Input type="date" value={formValues.articleStartDate} size="sm" className="w-3/4" name="articleStartDate" placeholder={articleStartDate} onChange={(event) => setFormValues(prevValues => ({ ...prevValues, articleStartDate: event.target.value }))}/>
       <Spacer y={1}/>
       <h4>End Date</h4>
-      <Input type="date" size="sm" className="w-3/4" name="articleEndDate" placeholder={articleEndDate} onChange={(value) => setFormValues(prevValues => ({ ...prevValues, articleEndDate: value }))}/>
+      <Input type="date" value={formValues.articleEndDate} size="sm" className="w-3/4" name="articleEndDate" placeholder={articleEndDate} onChange={(event) => setFormValues(prevValues => ({ ...prevValues, articleEndDate: event.target.value }))}/>
       <Spacer y={1}/>
       {/* <h4>Ignore Keywords</h4>
       <input type="text" name="ignoreKeywords" onKeyPress={(e) => {
@@ -78,7 +77,9 @@ export default function NewsProviders({sortBy, setSortBy,articleStartDate, artic
         }
       }} /> */}
       <Spacer y={1}/>
-      <div className='flex justify-end'>
+      <div className='grid grid-cols-3'>
+        <Button onClick={() => setFormValues(prevValues => ({ ...prevValues, articleStartDate: "", articleEndDate: "" }))}>Clear Dates</Button>
+        <div></div>
         <Button type="submit" className='jus'>Submit</Button>
       </div>
     </form>

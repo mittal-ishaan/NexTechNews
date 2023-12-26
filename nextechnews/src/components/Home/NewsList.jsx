@@ -6,12 +6,13 @@ import { Card } from '@nextui-org/card';
 import {ScrollShadow} from "@nextui-org/scroll-shadow";
 
 
-const NewsList = ({ fetchNewsData,keyword, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri }) => {
+const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri }) => {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
-  
+  const [errorMessage, setErrorMessage] = useState("");
+
   const capitalizeFirstLetter = (string) => {
       return string.charAt(0).toUpperCase() + string.slice(1);
   } 
@@ -38,20 +39,40 @@ const NewsList = ({ fetchNewsData,keyword, sortBy, sortByAsc, setSortByAsc ,arti
   //     updateNews();
   // }, [selectedProvider]);
   useEffect(() => {
-    console.log(keyword);
     const fetchData = async () => {
+      let data;
       setLoading(true);
-      const data = await fetchNewsData(keyword, sortBy, sortByAsc, articleStartDate, articleEndDate, ignoreKeywords);
-      setArticles(data);
+      if(keyword !== ""){
+        setErrorMessage("");
+        data = await fetchNewsData(keyword, sortBy, sortByAsc, articleStartDate, articleEndDate, ignoreKeywords);
+      }
+      else{
+        if(articleStartDate === "" && articleEndDate === "" && ignoreKeywords === ""){
+          setErrorMessage("");
+          data = await fetchTopArticles(sortBy, sortByAsc);
+       }
+       else{
+        setErrorMessage("Date selection in top headlines is not allowed");
+        data =-1;
+       }
+      }
       console.log(data);
+      if(data === -1){
+        setLoading(false);
+        return;
+      }
+      setArticles(data);
       setLoading(false);
     };
     fetchData();
+
   }, [keyword,sortBy,sortByAsc, articleStartDate, articleEndDate, ignoreKeywords]);
 
 
 
   return (
+    <>
+    {errorMessage && <div className="alert alert-error">{errorMessage}</div>}
     <ScrollShadow hideScrollBar >      
       {loading ? (
         <Spinner /> // Show loading spinner while articles are being fetched
@@ -76,6 +97,7 @@ const NewsList = ({ fetchNewsData,keyword, sortBy, sortByAsc, setSortByAsc ,arti
               </Card>
         </div> )}
     </ScrollShadow>
+    </>
   )
 NewsList.defaultProps = {
     country: 'in',

@@ -12,12 +12,20 @@ export default function Home() {
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
   const [isMediumScreen, setIsMediumScreen] = React.useState(false);
   const [searchbar, setSearchbar] = React.useState(true);
-  const [keyword, setKeyword] = React.useState("apple");
+  const [keyword, setKeyword] = React.useState("");
   const [darkMode, setDarkMode] = React.useState(false);
 
 
   return (
-    <main className={`min-h-screen text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
+    <main className={`text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
+          <NavBar 
+            searchbar={searchbar}
+            setSearchbar={setSearchbar}
+            keyword={keyword}
+            setKeyword={setKeyword} 
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}       
+          />
         {searchbar ?
           <Search
             searchbar={searchbar}
@@ -26,14 +34,6 @@ export default function Home() {
             setKeyword={setKeyword}
           />:  
           <>    
-            <NavBar 
-            searchbar={searchbar}
-            setSearchbar={setSearchbar}
-            keyword={keyword}
-            setKeyword={setKeyword} 
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}       
-            />
             <Explore
               darkMode={darkMode}
               keyword={keyword}
