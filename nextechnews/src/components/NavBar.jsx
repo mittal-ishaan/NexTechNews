@@ -22,7 +22,7 @@ import {
 import NextLink from "next/link";
 
 
-export default function NavBar({searchBar ,setSearchbar, keyword, setKeyword, darkMode, setDarkMode}) {
+export default function NavBar({searchbar ,setSearchbar, keyword, setKeyword, darkMode, setDarkMode}) {
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,7 +42,7 @@ export default function NavBar({searchBar ,setSearchbar, keyword, setKeyword, da
 			<Input
 			aria-label="Search"
 			classNames={{
-				inputWrapper: 'bg-default-100 w-96',
+				inputWrapper: 'bg-default-100 md:w-96 sm:w-64',
 				input: 'text-sm',
         
 			}}
@@ -82,9 +82,19 @@ export default function NavBar({searchBar ,setSearchbar, keyword, setKeyword, da
             endContent={<SunIcon />}
             onChange={(e) => setDarkMode(e.target.checked)}
           />
-          <Button as={Link} href="#" variant="flat">
-            Get Started
-          </Button>
+          {searchbar ?
+            <Button 
+              onClick={() => setSearchbar(false)}
+              variant="flat">
+              Home
+            </Button>
+            :
+            <Button 
+              onClick={() => setSearchbar(true)}
+              variant="flat">
+              Get Started
+            </Button>
+          }
         </NavbarItem>
       </NavbarContent>
       <NavbarContent className='sm:hidden basis-1 pl-4' justify="end">

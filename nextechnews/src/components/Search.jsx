@@ -1,14 +1,28 @@
 import React, { useEffect } from 'react';
 import Headline from '@/components/Headline';
-import Text from "@nextui-org/react";
-const Search = ({searchbar, setSearchbar,keyword, setKeyword}) => {
-  useEffect(() => {
-    console.log(keyword);
-  }, [keyword]);
+const Search = ({setSearchbar,setKeyword,setCountry}) => {
   return (
-    <div>
-      <Text h1>Search</Text>
-      <Headline title="Top Headline"/>
+    <div className='min-h-screen'>
+      <br/>
+      <div className='flex justify-center'>
+        <Headline 
+          title="Top Headline" 
+          url="newspaper.jpg" 
+          setSearchbar={setSearchbar}
+          setKeyword={setKeyword}
+          setCountry={setCountry}
+          />
+        <Headline title="USA Top Tech News" url="office_building.jpg"
+          setSearchbar={setSearchbar}
+          setKeyword={setKeyword}
+          setCountry={setCountry}
+          />
+        <Headline title="India Top Tech News" url="office_building.jpg"
+          setSearchbar={setSearchbar}
+          setKeyword={setKeyword}
+          setCountry={setCountry}
+          />
+      </div>
     </div>
   )
 }

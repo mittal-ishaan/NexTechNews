@@ -11,21 +11,30 @@ const NewsPreview = ({articleuri}) => {
     return data;
   }
   useEffect(() => {
-    console.log(articleuri)
     const getArticle = async () => {
       const articleFromServer = await getArticleData();
       setArticle(articleFromServer[articleuri].info);
     }
-    getArticle();
+    if(articleuri !== ""){
+      getArticle();
+    }
   }, [articleuri])
   return (
-    <Card shadow>
-      <CardHeader>{article.title}</CardHeader>
-      <CardFooter>
-        <img src={article.image} alt={article.title} style={{ width: '100%', height: 'auto' }} />
-      </CardFooter>
-      <CardBody>{article.body}</CardBody>
-    </Card>
+    <div>
+      {articleuri !== "" ? 
+            <Card shadow>
+            <CardHeader>{article.title}</CardHeader>
+            <CardFooter>
+              <img src={article.image} alt={article.title} style={{ width: '100%', height: 'auto' }} />
+            </CardFooter>
+            <CardBody>{article.body}</CardBody>
+          </Card>
+      : 
+      <Card shadow>
+        <CardHeader>Click on Read More to see the article</CardHeader>
+        </Card>
+      }
+    </div>
   )
 }
 

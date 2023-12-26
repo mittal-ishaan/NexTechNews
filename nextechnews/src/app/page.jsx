@@ -11,13 +11,14 @@ import React, { useEffect } from 'react';
 export default function Home() {
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
   const [isMediumScreen, setIsMediumScreen] = React.useState(false);
-  const [searchbar, setSearchbar] = React.useState(true);
+  const [searchbar, setSearchbar] = React.useState(false);
   const [keyword, setKeyword] = React.useState("");
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(true);
+  const [country, setCountry] = React.useState("");
 
 
   return (
-    <main className={`text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
+    <main className={`min-h-screen text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
           <NavBar 
             searchbar={searchbar}
             setSearchbar={setSearchbar}
@@ -28,15 +29,15 @@ export default function Home() {
           />
         {searchbar ?
           <Search
-            searchbar={searchbar}
             setSearchbar={setSearchbar}
-            keyword={keyword}
             setKeyword={setKeyword}
+            setCountry={setCountry}
           />:  
           <>    
             <Explore
               darkMode={darkMode}
               keyword={keyword}
+              country={country}
             />
           </>
         }

@@ -6,7 +6,7 @@ import NewsList from './Home/NewsList';
 import NewsPreview from './Home/NewsPreview';
 import {Divider} from "@nextui-org/divider";
 
-const Explore = ({darkMode,keyword}) => { 
+const Explore = ({darkMode,keyword,country}) => { 
     const [sortBy, setSortBy] = useState("date");
     const [sortByAsc, setSortByAsc] = useState(false);
     const [articleuri, setArticleuri] = useState("");
@@ -46,6 +46,10 @@ const Explore = ({darkMode,keyword}) => {
           
           if (ignoreKeywords) {
             requestBody.ignoreKeywords = ignoreKeywords;
+          }
+          
+          if(country){
+            requestBody.sourceLocationUri = country;
           }
           console.log(requestBody);
         const response = await fetch('http://eventregistry.org/api/v1/article/getArticles', {
@@ -110,6 +114,7 @@ const Explore = ({darkMode,keyword}) => {
                     articleEndDate={articleEndDate}
                     ignoreKeywords={ignoreKeywords}
                     setArticleuri={setArticleuri}
+                    country={country}
                 />
             </div>
             <div className='col-span-5'>

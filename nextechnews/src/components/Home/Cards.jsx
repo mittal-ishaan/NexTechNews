@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
 
-export default function Cards({key,title, description, url, urlToImage,uri,setArticleuri}) {
+export default function Cards({key,source, title, description, url, urlToImage,uri,setArticleuri}) {
+  useEffect(() => {
+    console.log(source);
+  }, [source]);
   return (
     <Card className="max-w-full m-1">
       <CardHeader className="flex gap-3">
@@ -13,7 +16,7 @@ export default function Cards({key,title, description, url, urlToImage,uri,setAr
         /> : null}
 
         <div className="flex flex-col">
-          {/* <p className="text-md">{source}</p> */}
+          <p className="text-md">{source}</p>
           <p className="text-sm">{title}</p>
         </div>
       </CardHeader>
