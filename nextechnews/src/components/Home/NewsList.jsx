@@ -6,7 +6,7 @@ import { Card } from '@nextui-org/card';
 import {ScrollShadow} from "@nextui-org/scroll-shadow";
 
 
-const NewsList = ({ fetchNewsData, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri }) => {
+const NewsList = ({ fetchNewsData,sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri }) => {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
@@ -44,7 +44,6 @@ const NewsList = ({ fetchNewsData, sortBy, sortByAsc, setSortByAsc ,articleStart
       console.log(data);
       setLoading(false);
     };
-  
     fetchData();
   }, [sortBy,sortByAsc, articleStartDate, articleEndDate, ignoreKeywords]);
 

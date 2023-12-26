@@ -7,8 +7,7 @@ import NewsList from './Home/NewsList';
 import NewsPreview from './Home/NewsPreview';
 import {Divider} from "@nextui-org/divider";
 
-const Explore = () => { 
-    const [keyword, setKeyword] = useState("apple");
+const Explore = ({keyword}) => { 
     const [sortBy, setSortBy] = useState("date");
     const [sortByAsc, setSortByAsc] = useState(false);
     const [articleuri, setArticleuri] = useState("");
@@ -63,7 +62,7 @@ const Explore = () => {
       }
   return (
     <div>
-        <Grid container spacing={2} className="min-h-screen">
+        <Grid container spacing={2} className="">
             <Grid item xs={2} className="border-r border-gray-200">
                 <NewsProviders 
                     sortBy={sortBy}
