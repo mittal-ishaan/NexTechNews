@@ -6,7 +6,7 @@ import { Card } from '@nextui-org/card';
 import {ScrollShadow} from "@nextui-org/scroll-shadow";
 
 
-const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri, country }) => {
+const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri, country, selectedProviders }) => {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
@@ -42,9 +42,9 @@ const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc,
     const fetchData = async () => {
       let data;
       setLoading(true);
-      if(keyword !== "" || country !== ""){
+      if(keyword !== "" || country !== "" || selectedProviders.length > 0){
         setErrorMessage("");
-        data = await fetchNewsData(keyword, sortBy, sortByAsc, articleStartDate, articleEndDate, ignoreKeywords, country);
+        data = await fetchNewsData(keyword, sortBy, sortByAsc, articleStartDate, articleEndDate, ignoreKeywords, country,selectedProviders);
       }
       else{
         if(articleStartDate === "" && articleEndDate === "" && ignoreKeywords === ""){
@@ -66,7 +66,7 @@ const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc,
     };
     fetchData();
 
-  }, [keyword,sortBy,sortByAsc, articleStartDate, articleEndDate, ignoreKeywords, country]);
+  }, [keyword,sortBy,sortByAsc, articleStartDate, articleEndDate, ignoreKeywords, country,selectedProviders]);
 
 
 

@@ -6,7 +6,7 @@ import NewsList from './Home/NewsList';
 import NewsPreview from './Home/NewsPreview';
 import {Divider} from "@nextui-org/divider";
 
-const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,setSortBy,articleStartDate,setArticleStartDate,articleEndDate,setArticleEndDate}) => { 
+const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,setSortBy,articleStartDate,setArticleStartDate,articleEndDate,setArticleEndDate,selectedProviders,setSelectedProviders}) => { 
     const [sortByAsc, setSortByAsc] = useState(false);
     const [articleuri, setArticleuri] = useState("");
     const [ignoreKeywords, setIgnoreKeywords] = useState("");
@@ -48,6 +48,9 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,s
           if(country){
             requestBody.sourceLocationUri = country;
           }
+          if(selectedProviders){
+            requestBody.sourceUri = selectedProviders.map(provider => `${provider}`);          
+          }
           console.log(requestBody);
         const response = await fetch('http://eventregistry.org/api/v1/article/getArticles', {
             method: 'POST',
@@ -88,7 +91,8 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,s
       }
   return (
     <div className='grid grid-cols-12 gap-1'>
-            <div className={`md:col-span-3 hidden md:block ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className='h-screen md:col-span-2 hidden md:block  overflow-x-hidden scrollbar-hide'>
+            <div className={` ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsProviders 
                     sortBy={sortBy}
                     setSortBy={setSortBy}
@@ -99,9 +103,12 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,s
                     setIgnoreKeywords={setIgnoreKeywords}
                     isSmallScreen={isSmallScreen}
                     isMediumScreen={isMediumScreen}
+                    selectedProviders={selectedProviders}
+                    setSelectedProviders={setSelectedProviders}
                 />
             </div>
-            <div className='h-screen md:col-span-4 col-span-5 overflow-x-hidden scrollbar-hide'>
+            </div>
+            <div className='h-screen md:col-span-5 col-span-5 overflow-x-hidden scrollbar-hide'>
               <div className={`border-r border-l ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
@@ -115,6 +122,8 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,s
                     ignoreKeywords={ignoreKeywords}
                     setArticleuri={setArticleuri}
                     country={country}
+                    selectedProviders={selectedProviders}
+                    setSelectedProviders={setSelectedProviders}
                 />
               </div>
             </div>

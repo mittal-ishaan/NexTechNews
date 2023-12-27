@@ -20,9 +20,10 @@ import {
 	NavbarMenuItem,
 } from "@nextui-org/react";
 import { Spacer } from '@nextui-org/react';
-import NavBar from '../NavBar';
+import { Divider } from '@nextui-org/react';
+import {Checkbox, Chip, cn} from "@nextui-org/react";
 
-export default function NewsProviders({sortBy, setSortBy,articleStartDate, articleEndDate, setArticleStartDate, setArticleEndDate, setIgnoreKeywords, isSmallScreen, isMediumScreen}) {
+export default function NewsProviders({sortBy, setSortBy,articleStartDate, articleEndDate, setArticleStartDate, setArticleEndDate, setIgnoreKeywords, isSmallScreen, isMediumScreen,selectedProviders,setSelectedProviders}) {
   const [formValues, setFormValues] = useState({
     sortBy: sortBy,
     articleStartDate: null,
@@ -44,10 +45,19 @@ export default function NewsProviders({sortBy, setSortBy,articleStartDate, artic
 
   const sortBar=[{"text":"Date",value:"date"}, {"text":"Social Score",value:"socialScore"}, {"text":"Importance",value:"sourceImportance"}, {"text":"Source Global Rank",value:"sourceAlexaGlobalRank"}, {"text":"Source Country Rank",value:"sourceAlexaCountryRank"}]
   const [selectedKey, setSelectedKey] = React.useState("Sort By");
+  const newsProviders =[{title:"BBC", url:"bbc.com"},{title:"New York Post", url:"nypost.com"},{title:"USA Today", url:"usatoday.com"},{title:"yahoo", url:"news.yahoo.com"},{title:"CNN", url:"cnn.com"},{title:"The Hindu", url:"thehindu.com"},{title:"MSN International Edition", url:"msn.com"},{title:"The New York Times", url:"nytimes.com"}];
 
+  const handleCheckboxChange = (provider) => {
+    if (selectedProviders.includes(provider)) {
+      setSelectedProviders(prevProviders => prevProviders.filter(prevProvider => prevProvider !== provider));
+    } else {
+      setSelectedProviders(prevProviders => [...prevProviders, provider]);
+    }
+  };
   return (
-    <form onSubmit={handleSubmit} className='mx-3'>
-      <h3>Filters</h3>
+    <>
+    <form onSubmit={handleSubmit} className='m-3'>
+      <h1 className='text-center text-lg'>Filters</h1>
       <Spacer y={1}/>
       <Dropdown>
         <DropdownTrigger>
@@ -89,12 +99,39 @@ export default function NewsProviders({sortBy, setSortBy,articleStartDate, artic
         }
       }} /> */}
       <Spacer y={1}/>
-      <div className='grid grid-cols-3'>
+      <div className='grid grid-cols-4'>
         <Button onClick={() => setFormValues(prevValues => ({ ...prevValues, articleStartDate: "", articleEndDate: "" }))}>Clear Dates</Button>
         <div></div>
         <Button type="submit" className='jus'>Submit</Button>
       </div>
     </form>
-
+    <Divider/>
+    <div className='m-3'>
+      <h3 className='text-center text-lg'>News Providers</h3>
+      <Spacer y={1}/>
+      {newsProviders.map(provider => (
+        <Checkbox
+          key={provider.url}
+          aria-label={provider.title}
+          color="warning"
+          classNames={{
+            base: cn(
+              "inline-flex w-full max-w-md bg-content1 my-0",
+              "hover:bg-content2 items-center justify-start",
+              "cursor-pointer rounded-lg gap-2 p-2 border-2 border-transparent",
+              // "data-[selected=true]:border-warning ",
+            ),
+            label: "w-full",
+          }}
+          isSelected={selectedProviders.includes(provider.url)}
+          onValueChange={() => handleCheckboxChange(provider.url)}
+        >
+          <div className="w-full flex justify-between gap-2">
+            <span className="text-default-500">{provider.title}</span>
+          </div>
+        </Checkbox>
+      ))}
+    </div>
+    </>
       );
     }

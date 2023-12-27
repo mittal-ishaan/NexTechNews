@@ -18,6 +18,7 @@ export default function Home() {
   const [articleStartDate, setArticleStartDate] = useState("");
   const [articleEndDate, setArticleEndDate] = useState("");
   const [sortBy, setSortBy] = useState("date");
+  const [selectedProviders, setSelectedProviders] = useState([]);
 
 
   const handleResize = () => {
@@ -45,7 +46,9 @@ export default function Home() {
             articleStartDate={articleStartDate}
             setArticleStartDate={setArticleStartDate}
             articleEndDate={articleEndDate}
-            setArticleEndDate={setArticleEndDate}     
+            setArticleEndDate={setArticleEndDate}
+            selectedProviders={selectedProviders}
+            setSelectedProviders={setSelectedProviders}  
           />
         {searchbar ?
           <Search
@@ -66,6 +69,8 @@ export default function Home() {
               articleEndDate={articleEndDate}
               setArticleStartDate={setArticleStartDate}
               setArticleEndDate={setArticleEndDate}
+              selectedProviders={selectedProviders}
+              setSelectedProviders={setSelectedProviders}
             />
           </>
         }
