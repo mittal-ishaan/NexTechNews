@@ -63,7 +63,7 @@ export default function NavBar({searchbar ,setSearchbar, keyword, setKeyword, da
       <NavbarBrand className="gap-3 max-w-fit basis-1/5 sm:basis-full">
         {/* Icon */}
         <NextLink className="flex justify-start items-center gap-1" href="/">
-						<p className="font-bold text-inherit">nexTechNews</p>
+						<p className="font-bold text-inherit">NexTechNews</p>
 					</NextLink>
       </NavbarBrand>
       <NavbarContent className='hidden sm:flex basis-1/5 sm:basis-full' justify='center'>
