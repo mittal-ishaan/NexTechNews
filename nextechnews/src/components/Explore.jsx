@@ -6,7 +6,7 @@ import NewsList from './Home/NewsList';
 import NewsPreview from './Home/NewsPreview';
 import {Divider} from "@nextui-org/divider";
 
-const Explore = ({darkMode,keyword,country}) => { 
+const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => { 
     const [sortBy, setSortBy] = useState("date");
     const [sortByAsc, setSortByAsc] = useState(false);
     const [articleuri, setArticleuri] = useState("");
@@ -91,7 +91,7 @@ const Explore = ({darkMode,keyword,country}) => {
       }
   return (
     <div className='grid grid-cols-12 gap-1'>
-            <div className={`col-span-3 border-r  ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className={`col-span-3 border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsProviders 
                     sortBy={sortBy}
                     setSortBy={setSortBy}
@@ -100,9 +100,12 @@ const Explore = ({darkMode,keyword,country}) => {
                     setArticleStartDate={setArticleStartDate}
                     setArticleEndDate={setArticleEndDate}
                     setIgnoreKeywords={setIgnoreKeywords}
+                    isSmallScreen={isSmallScreen}
+                    isMediumScreen={isMediumScreen}
                 />
             </div>
-            <div className={`col-span-4 border-r overflow-scroll ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className='h-screen col-span-4 overflow-x-hidden scrollbar-hide'>
+              <div className={`border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
                     fetchTopArticles={fetchTopArticles}
@@ -116,11 +119,14 @@ const Explore = ({darkMode,keyword,country}) => {
                     setArticleuri={setArticleuri}
                     country={country}
                 />
+              </div>
             </div>
+            <div className='h-screen col-span-5 overflow-x-hidden scrollbar-hide'>
             <div className='col-span-5'>
                 <NewsPreview
                     articleuri={articleuri}
                 />
+            </div>
             </div>
     </div>
   );

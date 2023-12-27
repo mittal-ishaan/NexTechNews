@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 
 export default function Cards({key,source, title, description, url, urlToImage,uri,setArticleuri}) {
   useEffect(() => {
@@ -39,9 +39,15 @@ export default function Cards({key,source, title, description, url, urlToImage,u
         >
           Visit original article.
         </Link>
-        <Link>
-          <button onClick={() => {console.log(uri);setArticleuri(uri);}} className="text-sm col-4">Read More</button>
-        </Link>
+        <Button 
+          className="text-tiny text-white bg-black/20" 
+          variant="flat" 
+          color="default" 
+          radius="lg" 
+          size="sm"
+          onClick={() => {console.log(uri);setArticleuri(uri);}}>
+            Read More
+        </Button>
       </CardFooter>
     </Card>
   );

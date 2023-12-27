@@ -7,10 +7,22 @@ import {
   DropdownSection,
   DropdownItem
 } from "@nextui-org/dropdown";
-import {Input} from "@nextui-org/input";
-import { Button, Spacer } from '@nextui-org/react';
+import {
+	Button,
+	Link,
+	Input,
+	Navbar,
+	NavbarContent,
+	NavbarMenu,
+	NavbarMenuToggle,
+	NavbarBrand,
+	NavbarItem,
+	NavbarMenuItem,
+} from "@nextui-org/react";
+import { Spacer } from '@nextui-org/react';
+import NavBar from '../NavBar';
 
-export default function NewsProviders({sortBy, setSortBy,articleStartDate, articleEndDate, setArticleStartDate, setArticleEndDate, setIgnoreKeywords}) {
+export default function NewsProviders({sortBy, setSortBy,articleStartDate, articleEndDate, setArticleStartDate, setArticleEndDate, setIgnoreKeywords, isSmallScreen, isMediumScreen}) {
   const [formValues, setFormValues] = useState({
     sortBy: sortBy,
     articleStartDate: null,
@@ -83,6 +95,6 @@ export default function NewsProviders({sortBy, setSortBy,articleStartDate, artic
         <Button type="submit" className='jus'>Submit</Button>
       </div>
     </form>
-    
+
       );
     }

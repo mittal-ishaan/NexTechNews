@@ -59,7 +59,7 @@ export default function NavBar({searchbar ,setSearchbar, keyword, setKeyword, da
 	);
 
   return (
-    <Navbar isBordered maxWidth="xl" position="sticky">
+    <Navbar isBordered maxWidth="xl" position="absolute">
       <NavbarBrand className="gap-3 max-w-fit basis-1/5 sm:basis-full">
         {/* Icon */}
         <NextLink className="flex justify-start items-center gap-1" href="/">

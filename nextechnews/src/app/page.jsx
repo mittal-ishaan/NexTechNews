@@ -16,9 +16,19 @@ export default function Home() {
   const [darkMode, setDarkMode] = React.useState(true);
   const [country, setCountry] = React.useState("");
 
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 640);
+    setIsMediumScreen(window.innerWidth < 768);
+  }
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   return (
-    <main className={`min-h-screen text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
+    <main className={`text-foreground bg-background ${darkMode ? 'dark' : ''}`}>
           <NavBar 
             searchbar={searchbar}
             setSearchbar={setSearchbar}
@@ -38,6 +48,8 @@ export default function Home() {
               darkMode={darkMode}
               keyword={keyword}
               country={country}
+              isSmallScreen={isSmallScreen}
+              isMediumScreen={isMediumScreen}
             />
           </>
         }
