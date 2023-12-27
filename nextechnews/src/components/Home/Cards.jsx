@@ -1,23 +1,18 @@
 import React, { useEffect } from "react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 
-export default function Cards({key,source, title, description, url, urlToImage,uri,setArticleuri}) {
+export default function Cards({key,source, title, description, url, index,uri,setArticleuri}) {
   useEffect(() => {
     console.log(source);
   }, [source]);
   return (
     <Card className="max-w-full m-1">
-      <CardHeader className="flex gap-3">
-        {urlToImage ?         
-        <Image
-          alt="logo"
-          radius="sm"
-          src={urlToImage}
-        /> : null}
-        <div className="flex flex-col">
-          <p className="text-md">{source}</p>
-          <p className="text-sm">{title}</p>
-        </div>
+      <CardHeader className="grid grid-cols-12 gap-3">
+      <span className="w-6 h-6 bg-blue-500 col-span-1 flex items-center justify-center">{index+1}</span>      
+      <div className="flex flex-col col-span-11">
+        {/* <p className="text-md">{source}</p> */}
+        <p className="text-sm">{title}</p>
+      </div>
       </CardHeader>
       
     {description ? (

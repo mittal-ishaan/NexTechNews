@@ -27,7 +27,7 @@ const NewsPreview = ({articleuri}) => {
   return (
     <div>
       {articleuri !== "" ? 
-            <Card shadow>
+            <Card shadow className="max-w-full m-1">
               <CardHeader className='justify-center'>
               <Skeleton isLoaded={!loading}>
                 <p className='text-md text-center'>{article.title}</p>  
@@ -52,7 +52,7 @@ const NewsPreview = ({articleuri}) => {
             </Skeleton>
           </Card>
       : 
-      <Card shadow>
+      <Card shadow className="max-w-full m-1">
         <CardHeader>Click on Read More to see the article</CardHeader>
         </Card>
       }

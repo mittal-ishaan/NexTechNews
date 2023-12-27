@@ -22,7 +22,7 @@ import {
 import NextLink from "next/link";
 
 
-export default function NavBar({searchbar ,setSearchbar, keyword, setKeyword, darkMode, setDarkMode}) {
+export default function NavBar({searchbar ,setSearchbar, keyword, setKeyword, darkMode, setDarkMode, sortBy, setSortBy, articleStartDate, setArticleStartDate, articleEndDate, setArticleEndDate}) {
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 
   const [searchQuery, setSearchQuery] = useState("");

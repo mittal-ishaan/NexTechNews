@@ -6,12 +6,9 @@ import NewsList from './Home/NewsList';
 import NewsPreview from './Home/NewsPreview';
 import {Divider} from "@nextui-org/divider";
 
-const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => { 
-    const [sortBy, setSortBy] = useState("date");
+const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,setSortBy,articleStartDate,setArticleStartDate,articleEndDate,setArticleEndDate}) => { 
     const [sortByAsc, setSortByAsc] = useState(false);
     const [articleuri, setArticleuri] = useState("");
-    const [articleStartDate, setArticleStartDate] = useState("");
-    const [articleEndDate, setArticleEndDate] = useState("");
     const [ignoreKeywords, setIgnoreKeywords] = useState("");
 
       async function fetchNewsData() {
@@ -91,7 +88,7 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => {
       }
   return (
     <div className='grid grid-cols-12 gap-1'>
-            <div className={`col-span-3 ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className={`md:col-span-3 hidden md:block ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsProviders 
                     sortBy={sortBy}
                     setSortBy={setSortBy}
@@ -104,7 +101,7 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => {
                     isMediumScreen={isMediumScreen}
                 />
             </div>
-            <div className='h-screen col-span-4 overflow-x-hidden scrollbar-hide'>
+            <div className='h-screen md:col-span-4 col-span-5 overflow-x-hidden scrollbar-hide'>
               <div className={`border-r border-l ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
@@ -121,7 +118,7 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => {
                 />
               </div>
             </div>
-            <div className='h-screen col-span-5 overflow-x-hidden scrollbar-hide mr-1'>
+            <div className='h-screen md:col-span-5 col-span-7 overflow-x-hidden scrollbar-hide'>
                 <NewsPreview
                     articleuri={articleuri}
                 />

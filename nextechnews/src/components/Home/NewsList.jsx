@@ -79,14 +79,14 @@ const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc,
       ) : (
           <div className="container">
             <div className="row">
-                {articles.articles.results.map((element) => {
+                {articles.articles.results.map((element,index) => {
                     return <Cards
                       key={element.uri}
                       source={capitalizeFirstLetter(element.source.title)}
                       title={element.title? element.title : ""}
                       description={element.body? element.body : ""}
                       url={element.url}
-                      image={element.image}
+                      index={index}
                       uri={element.uri}
                       setArticleuri={setArticleuri}
                     />

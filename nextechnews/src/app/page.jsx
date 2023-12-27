@@ -6,15 +6,19 @@ import {Button} from '@nextui-org/button';
 import {NextUIProvider} from "@nextui-org/react";
 import Explore from '@/components/Explore';
 import Search from '@/components/Search';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [isSmallScreen, setIsSmallScreen] = React.useState(false);
-  const [isMediumScreen, setIsMediumScreen] = React.useState(false);
-  const [searchbar, setSearchbar] = React.useState(false);
-  const [keyword, setKeyword] = React.useState("");
-  const [darkMode, setDarkMode] = React.useState(true);
-  const [country, setCountry] = React.useState("");
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isMediumScreen, setIsMediumScreen] = useState(false);
+  const [searchbar, setSearchbar] = useState(false);
+  const [keyword, setKeyword] = useState("");
+  const [darkMode, setDarkMode] = useState(true);
+  const [country, setCountry] = useState("");
+  const [articleStartDate, setArticleStartDate] = useState("");
+  const [articleEndDate, setArticleEndDate] = useState("");
+  const [sortBy, setSortBy] = useState("date");
+
 
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth < 640);
@@ -35,7 +39,13 @@ export default function Home() {
             keyword={keyword}
             setKeyword={setKeyword} 
             darkMode={darkMode}
-            setDarkMode={setDarkMode}       
+            setDarkMode={setDarkMode}  
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            articleStartDate={articleStartDate}
+            setArticleStartDate={setArticleStartDate}
+            articleEndDate={articleEndDate}
+            setArticleEndDate={setArticleEndDate}     
           />
         {searchbar ?
           <Search
@@ -50,6 +60,12 @@ export default function Home() {
               country={country}
               isSmallScreen={isSmallScreen}
               isMediumScreen={isMediumScreen}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+              articleStartDate={articleStartDate}
+              articleEndDate={articleEndDate}
+              setArticleStartDate={setArticleStartDate}
+              setArticleEndDate={setArticleEndDate}
             />
           </>
         }
