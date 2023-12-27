@@ -91,7 +91,7 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => {
       }
   return (
     <div className='grid grid-cols-12 gap-1'>
-            <div className={`col-span-3 border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+            <div className={`col-span-3 ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsProviders 
                     sortBy={sortBy}
                     setSortBy={setSortBy}
@@ -105,7 +105,7 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => {
                 />
             </div>
             <div className='h-screen col-span-4 overflow-x-hidden scrollbar-hide'>
-              <div className={`border-r ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
+              <div className={`border-r border-l ${darkMode ? 'border-slate-900' : 'border-gray-300'}`}>
                 <NewsList 
                     fetchNewsData={fetchNewsData}
                     fetchTopArticles={fetchTopArticles}
@@ -121,12 +121,10 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen}) => {
                 />
               </div>
             </div>
-            <div className='h-screen col-span-5 overflow-x-hidden scrollbar-hide'>
-            <div className='col-span-5'>
+            <div className='h-screen col-span-5 overflow-x-hidden scrollbar-hide mr-1'>
                 <NewsPreview
                     articleuri={articleuri}
                 />
-            </div>
             </div>
     </div>
   );

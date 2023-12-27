@@ -14,7 +14,6 @@ export default function Cards({key,source, title, description, url, urlToImage,u
           radius="sm"
           src={urlToImage}
         /> : null}
-
         <div className="flex flex-col">
           <p className="text-md">{source}</p>
           <p className="text-sm">{title}</p>
@@ -30,7 +29,7 @@ export default function Cards({key,source, title, description, url, urlToImage,u
       </>
     ) : null}
       <Divider/>
-      <CardFooter className="flex gap-3">
+      <CardFooter className="justify-between gap-3">
         <Link
           isExternal
           showAnchorIcon

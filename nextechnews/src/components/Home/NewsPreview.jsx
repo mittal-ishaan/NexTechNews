@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Card, CardHeader, CardBody, CardFooter} from '@nextui-org/card'
+import {Card, CardHeader, CardBody, CardFooter} from '@nextui-org/card';
+import {Divider} from '@nextui-org/react';
 const NewsPreview = ({articleuri}) => {
   const [article, setArticle] = useState([]);
 
@@ -23,11 +24,21 @@ const NewsPreview = ({articleuri}) => {
     <div>
       {articleuri !== "" ? 
             <Card shadow>
-            <CardHeader>{article.title}</CardHeader>
-            <CardFooter>
-              <img src={article.image} alt={article.title} style={{ width: '100%', height: 'auto' }} />
+            <CardHeader className='justify-center'>
+              <p className='text-md text-center'>{article.title}</p>  
+            </CardHeader>
+            <Divider/>
+            {article.image &&
+              <CardFooter className='flex justify-center'>
+              <img src={article.image} 
+              alt={article.title} 
+              width={250}
+              className='rounded'
+              // style={{ width: '75%', height: 'auto' }} 
+            />
             </CardFooter>
-            <CardBody>{article.body}</CardBody>
+            }
+            <CardBody className='text-sm justify-normal'>{article.body}</CardBody>
           </Card>
       : 
       <Card shadow>
