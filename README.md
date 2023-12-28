@@ -13,7 +13,7 @@
 
 <p align="center">
 	<strong>
-		<a href="http://www.nextechnews.site/">Website</a>
+		<a href="http://34.201.127.165/">Website</a>
 	</strong>
 </p>
 
@@ -46,8 +46,17 @@
 </details>
 
 ## About The Project
+NexTechNews is a news aggregator that provides the latest news from the world of technology. It is built using Next.js, Tailwind CSS and NextUI. It uses the NewsAPI to fetch the latest news from various sources. The website is hosted on AWS EC2 instance. (Our website is not fully responsive yet, so please view it on a laptop or desktop for the best experience.)
 
 ### Features
+* Get Top Headlines from the world of technology
+* Search for news by keywords
+* Filter news by source
+* Sort news by date, popularity and relevancy
+* Explore news by date ranges
+* Read full article on our website itself
+* Switch between light and dark mode
+* Get Started button for easy navigation
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -56,8 +65,8 @@
 * [Next.js](https://nextjs.org/)
 * [React](https://reactjs.org/)
 * [Tailwind CSS](https://tailwindcss.com/)
-* [Material-UI](https://mui.com/)
-* [NewsAPI](https://newsapi.org/)
+* [NextUI](https://nextui.org/)
+* [NewsAPI](https://www.newsapi.ai/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -68,7 +77,8 @@ Follow these instructions to set up and run the project locally on your machine.
 ### Prerequisites
 
 * npm
-  ```sh
+
+  ```bash
   npm install npm@latest -g
   ```
 
@@ -107,9 +117,9 @@ Follow these instructions to set up and run the project locally on your machine.
         ```
 5. Install the required packages:
     
-        ```bash
-        npm install
-        ```
+    ```bash
+    npm install
+    ```
 6. Run the development server:
 
     ```bash
@@ -159,10 +169,23 @@ Follow these instructions to set up and run the project locally on your machine.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roadmap
+- [*] Make a basic UI
+- [*] Add NewsAPI.ai
+- [*] Add search functionality
+- [*] Add full article view functionality
+- [*] Add filter, sort, date range functionality
+- [*] Add dark mode
+- [*] Add get started button
+- [*] Add responsiveness for laptop and desktop
+- [8] Add responsiveness for mobile and tablet
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
 
 Ishaan Mittal - [me210003039@iiti.ac.in](mailto:me210003039@iiti.ac.in)
+
 Github - [https://github.com/mittal-ishaan/dotflo-assignment](https://github.com/mittal-ishaan/dotflo-assignment)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
