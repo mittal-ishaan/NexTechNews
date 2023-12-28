@@ -4,7 +4,7 @@
 	<img
 		width="300"
 		alt="NexTechNews"
-		src="./images/logo.png">
+		src="./images/company_logo-removebg.png">
 </h1>
 
 <h3 align="center">
@@ -19,7 +19,7 @@
 
 <div style="display: inline-block; background-color: black; padding: 2px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
     <!-- Inline styles for the image -->
-    <img src="./images/homepage.png" alt="Homepage" style="width: 100%; height: auto; display: block;">
+    <img src="./images/screenshot.png" alt="Homepage" style="width: 100%; height: auto; display: block;">
   </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -169,15 +169,15 @@ Follow these instructions to set up and run the project locally on your machine.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roadmap
-- [*] Make a basic UI
-- [*] Add NewsAPI.ai
-- [*] Add search functionality
-- [*] Add full article view functionality
-- [*] Add filter, sort, date range functionality
-- [*] Add dark mode
-- [*] Add get started button
-- [*] Add responsiveness for laptop and desktop
-- [8] Add responsiveness for mobile and tablet
+- [X] Make a basic UI
+- [X] Add NewsAPI.ai
+- [X] Add search functionality
+- [X] Add full article view functionality
+- [X] Add filter, sort, date range functionality
+- [X] Add dark mode
+- [X] Add get started button
+- [X] Add responsiveness for laptop and desktop
+- [ ] Add responsiveness for mobile and tablet
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
