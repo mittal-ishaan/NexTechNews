@@ -2,7 +2,7 @@
 
 <h1 align="center">
 	<img
-		width="300"
+		width="100"
 		alt="NexTechNews"
 		src="./images/company_logo-removebg.png">
 </h1>
@@ -39,7 +39,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#api">API</a></li>
+    <li><a href="#frontend-folder-stucture">Frontend Folder Sructure</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
