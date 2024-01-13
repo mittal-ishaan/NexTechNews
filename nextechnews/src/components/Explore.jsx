@@ -19,7 +19,7 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,s
             "articlesCount": 25,
             "resultType": "articles",
             "dataType": ["news", "pr", "blog"],
-            "apiKey": "66a98f4d-c282-4adc-816b-8c13fe3de062",
+            "apiKey": process.env.NEXT_PUBLIC_API_KEY_EVENT,
             "categoryUri": "news/Technology",
             "lang": "eng",
             "articleBodyLen": 100,
@@ -63,17 +63,17 @@ const Explore = ({darkMode,keyword,country,isSmallScreen,isMediumScreen,sortBy,s
         return data;
       };
 
-      async function fetchTopArticles(){
+        async function fetchTopArticles(){
         let requestBody = {
-            "uri": "54cdbea0-24f3-435f-bbbf-fb0647787d97",
-            "articlesCount": 25,
-            "apiKey": "66a98f4d-c282-4adc-816b-8c13fe3de062",
-            "articlePage": 1,
-            "dataType": ["news", "pr", "blog"],
-            "articleBodyLen": 100  
+          "uri": "54cdbea0-24f3-435f-bbbf-fb0647787d97",
+          "articlesCount": 25,
+          "apiKey": process.env.NEXT_PUBLIC_API_KEY_EVENT,
+          "articlePage": 1,
+          "dataType": ["news", "pr", "blog"],
+          "articleBodyLen": 100  
         }
         if(sortBy){
-            requestBody.articlesSortBy = sortBy;
+          requestBody.articlesSortBy = sortBy;
         }
         if(sortByAsc){
             requestBody.articlesSortByAsc = sortByAsc;

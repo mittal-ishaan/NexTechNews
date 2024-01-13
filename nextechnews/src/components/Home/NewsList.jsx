@@ -4,6 +4,7 @@ import Cards from './Cards';
 import {Spinner} from "@nextui-org/spinner";
 import { Card } from '@nextui-org/card';
 import {ScrollShadow} from "@nextui-org/scroll-shadow";
+import { toast } from 'react-toastify';
 
 
 const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc, setSortByAsc ,articleStartDate, articleEndDate, ignoreKeywords, setArticleuri, country, selectedProviders }) => {
@@ -22,7 +23,7 @@ const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc,
   // Call this function where you need to fetch the news data
   
   // const updateNews = async ()=> {
-  //     // const url = `https://newsapi.org/v2/top-headlines?q=${selectedProvider.query}&country=${selectedProvider.country}&category=technology&apiKey=f187ce5b9846475c9da589d78f6b29c1&pageSize=10`; 
+  //     // const url = `https://newsapi.org/v2/top-headlines?q=${selectedProvider.query}&country=${selectedProvider.country}&category=technology&apiKey=&pageSize=10`; 
   //     const url = 'http://eventregistry.org/api/v1/article/getArticles?apiKey=66a98f4d-c282-4adc-816b-8c13fe3de062&keyword=apple';
   //     setLoading(true)
   //     console.log(url);
@@ -52,11 +53,11 @@ const NewsList = ({ fetchNewsData, fetchTopArticles, keyword, sortBy, sortByAsc,
           data = await fetchTopArticles(sortBy, sortByAsc);
        }
        else{
-        setErrorMessage("Date selection in top headlines is not allowed");
+        // setErrorMessage("Date selection in top headlines is not allowed");
+        toast.error("Date selection in top headlines is not allowed");
         data =-1;
        }
       }
-      console.log(data);
       if(data === -1){
         setLoading(false);
         return;
